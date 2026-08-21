@@ -1,11 +1,15 @@
-function ProductCard({ product, onAddToCart }) {
+import { useCart } from "../context/CartContext";
+
+function ProductCard({ product }) {
+  const { addToCart } = useCart();
+
   return (
     <div className="product-card">
       <h3>{product.name}</h3>
 
       <p>Price: Rs. {product.price}</p>
 
-      <button onClick={() => onAddToCart(product)}>
+      <button onClick={() => addToCart(product)}>
         Add to Cart
       </button>
     </div>

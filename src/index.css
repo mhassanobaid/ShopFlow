@@ -27,6 +27,17 @@ body {
   color: white;
 }
 
+.mode-button {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.toggle-button {
+  width: 200px;
+  margin-top: 15px;
+}
+
 .container {
   max-width: 1000px;
   margin: 40px auto;

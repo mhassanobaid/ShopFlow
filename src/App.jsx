@@ -1,11 +1,9 @@
-import { useState } from "react";
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList";
 import { useContext } from "react";
 import { ThemeContext } from "./context/ThemeContext";
 
 function App() {
-  const [cart, setCart] = useState([]);
   const {theme, toggleTheme} = useContext(ThemeContext);
 
   const products = [
@@ -31,30 +29,20 @@ function App() {
     },
   ];
 
-  const handleAddToCart = (product) => {
-    setCart((currentCart) => [
-      ...currentCart,
-      product,
-    ]);
-  };
-
-  const handleClearCart = () => {
-    // your implementation
-    setCart([]);
-  };
-
   return (
     <div className={`index ${theme}`}>
-      <Navbar cartCount={cart.length} onRemoveToCart={handleClearCart} />
+      <Navbar  />
+
+      <div className="mode-button">
+        <button onClick={toggleTheme} className="toggle-button">
+          Switch to {theme === "light" ? "Dark" : "Light"} Mode
+        </button>
+      </div>
 
       <main className="container">
         <ProductList
           products={products}
-          onAddToCart={handleAddToCart}
         />
-        <button onClick={toggleTheme}>
-          Switch to {theme === "light" ? "Dark" : "Light"} Mode
-        </button>
       </main>
     </div>
   );

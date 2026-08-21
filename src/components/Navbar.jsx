@@ -1,13 +1,18 @@
-function Navbar({ cartCount, onRemoveToCart }) {
+import { useContext } from "react";
+import { useCart } from "../context/CartContext";
+
+function Navbar() {
+  const { cart, clearCart } = useCart();
+
   return (
     <nav className="navbar">
       <h1>ShopFlow</h1>
 
       <div>
-        🛒 Cart: {cartCount}
+        🛒 Cart: {cart.length}
       </div>
 
-      <button onClick={onRemoveToCart}>
+      <button onClick={clearCart}>
         Clear Cart
       </button>
     </nav>
