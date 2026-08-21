@@ -17,6 +17,16 @@ body {
   color: white;
 }
 
+.index.light {
+  background: white;
+  color: #222;
+}
+
+.index.dark {
+  background: #222;
+  color: white;
+}
+
 .container {
   max-width: 1000px;
   margin: 40px auto;

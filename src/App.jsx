@@ -1,9 +1,12 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList";
+import { useContext } from "react";
+import { ThemeContext } from "./context/ThemeContext";
 
 function App() {
   const [cart, setCart] = useState([]);
+  const {theme, toggleTheme} = useContext(ThemeContext);
 
   const products = [
     {
@@ -41,7 +44,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className={`index ${theme}`}>
       <Navbar cartCount={cart.length} onRemoveToCart={handleClearCart} />
 
       <main className="container">
@@ -49,6 +52,9 @@ function App() {
           products={products}
           onAddToCart={handleAddToCart}
         />
+        <button onClick={toggleTheme}>
+          Switch to {theme === "light" ? "Dark" : "Light"} Mode
+        </button>
       </main>
     </div>
   );
